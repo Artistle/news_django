@@ -1,0 +1,29 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+    {{tag.title}} - {{block.super}}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">Post with "{{ tag.title|title}}" tag:</h1>
+
+    {% for news in tag.posts.all %}
+
+        <div class="card mb-4">
+
+            <div class="card-header">
+                {{news.title}}
+            </div>
+            <div class="card-body">
+                    <h5 class="card-title">
+                        {{news.text}}
+                    </h5>
+                    <a href="{{news.get_absolute_url}}" class="btn btn-light">
+                        read
+                    </a>
+            </div>
+
+         </div>
+
+    {% endfor %}
+{% endblock %}
